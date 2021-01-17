@@ -1,0 +1,290 @@
+
+
+
+
+
+/* ~~~~~ Mixins ~~~~~ */
+
+
+
+
+
+@mixin d-flex-center {
+  display: flex;	
+  justify-content: center;
+	align-items: center;
+}
+
+
+
+
+
+/* Pseudo Element */
+
+@mixin pseudoElement {
+  content: "";
+
+  display: inline-block;
+  height: inhert;
+  width: inhert;
+  z-index: -1;
+} 
+
+
+
+
+/* Position Properties */
+
+@mixin p-relative {
+  position: relative;
+}
+@mixin p-absolute {
+  position: absolute;
+}
+@mixin p-fixed {
+  position: fixed;
+}
+
+
+/* Position Corners */
+
+@mixin p-topleft {
+  top: 0;  
+  left: 0;
+}
+@mixin p-topright {
+  top: 0;
+  right: 0;
+}
+@mixin p-bottomleft {
+  bottom: 0;
+  left: 0;
+}
+@mixin p-bottomright {
+  bottom: 0;
+  right: 0;
+}
+
+
+/* Position Relative Corners */
+
+@mixin p-relativec-topleft {
+  @include p-relative;
+  @include p-topleft;
+}
+@mixin p-relativec-topright {
+  @include p-relative;
+  @include p-topright;
+}
+@mixin p-relativec-bottomleft {
+  @include p-relative;
+  @include p-bottomleft;
+}
+@mixin p-relativec-bottomright {
+  @include p-absolute;
+  @include p-bottomright;
+}
+
+
+/* Position Absolute Corners */
+
+@mixin p-absolutec-topleft {
+  @include p-absolute;
+  @include p-topleft;
+}
+@mixin p-absolutec-topright {
+  @include p-absolute;
+  @include p-topright;
+}
+@mixin p-absolutec-bottomleft {
+  @include p-absolute;
+  @include p-bottomleft;
+}
+@mixin p-absolutec-bottomright {
+  @include p-absolute;
+  @include p-bottomright;
+}
+
+
+/* Position Fixed Corners */
+
+@mixin p-fixedc-topleft {
+  @include p-fixed;
+  @include p-topleft;
+}
+@mixin p-fixedc-topright {
+  @include p-fixed;
+  @include p-topright;
+}
+@mixin p-fixedc-bottomleft {
+  @include p-fixed;
+  @include p-bottomleft;
+}
+@mixin p-fixedc-bottomright {
+  @include p-fixed;
+  @include p-bottomright;
+}
+
+
+/* Position Inward Corners */
+
+@mixin p-icorner-left {
+  left: 50%;
+  @include t-translatex-ncenter;
+}
+@mixin p-icorner-right {
+  right: 50%;
+  @include t-translatex-pcenter;
+}
+@mixin p-icorner-top {
+  top: 50%;
+  @include t-translatey-ncenter;
+}
+@mixin p-icorner-bottom {
+  bottom: 50%;
+  @include t-translatey-pcenter;
+}
+
+
+/* Position Inward Center */
+
+@mixin p-icenter-topleft {
+  @include p-icorner-top;
+  @include p-icorner-left;
+}
+@mixin p-icenter-topright {
+  @include p-icorner-top;
+  @include p-icorner-right;
+}
+@mixin p-icenter-bottomleft {
+  @include p-icorner-bottom;
+  @include p-icorner-left;
+}
+@mixin p-icenter-bottomright {
+  @include p-icorner-bottom;
+  @include p-icorner-right;
+}
+
+
+
+/* Position Outward Corner */
+
+@mixin p-ocorner-left {
+  left: -50%;
+  @include t-translatex-pcenter;
+}
+@mixin p-ocorner-right {
+  right: -50%;
+  @include t-translatex-ncenter;
+}
+@mixin p-ocorner-top {
+  top: -50%;
+  @include t-translatey-pcenter;
+}
+@mixin p-ocorner-bottom {
+  bottom: -50%;
+  @include t-translatey-ncenter;
+}
+
+/* Position Outward Center */
+
+@mixin p-ocenter-topleft {
+  @include p-ocorner-top;
+  @include p-ocorner-left;
+}
+@mixin p-ocenter-topright {
+  @include p-ocorner-top;
+  @include p-ocorner-right;
+}
+@mixin p-ocenter-bottomleft {
+  @include p-ocorner-bottom;
+  @include p-ocorner-left;
+}
+@mixin p-ocenter-bottomright {
+  @include p-ocorner-bottom;
+  @include p-ocorner-right;
+}
+
+
+
+
+
+/* Transforms Translate Inward-Outward Center */
+
+@mixin t-translatex-icenter {
+  transform: translateX(50%);
+}
+@mixin t-translatey-icenter {
+  transform: translateY(50%);
+}
+@mixin t-translatex-ocenter {
+  transform: translateX(-50%);
+}
+@mixin t-translatey-ocenter {
+  transform: translateY(-50%);
+}
+
+
+/* Transforms Scale Start-End */
+
+@mixin t-scalex-start {
+  transform: scaleX(0);
+}
+@mixin t-scaley-start {
+  transform: scaleY(0);
+}
+@mixin t-scalex-end {
+  transform: scaleX(1);
+}
+@mixin t-scaley-end {
+  transform: scaleY(1);
+}
+
+
+/* Transforms Origin Start */
+
+@mixin t-origin-leftstart {
+  @include t-scalex-start;
+  transform-origin: left;
+} 
+@mixin t-origin-rightstart {
+  @include t-scalex-start;
+  transform: scaleX(0);
+  transform-origin: right;
+} 
+@mixin t-origin-topstart {
+  @include t-scaley-start;
+  transform-origin: top;
+} 
+@mixin t-origin-bottomstart {
+  @include t-scaley-start;
+  transform-origin: bottom;
+} 
+
+
+/* Transforms Origin End */
+
+@mixin t-origin-leftend {
+  @include t-scalex-end;
+  transform-origin: left;
+} 
+@mixin t-origin-rightend {
+  @include t-scalex-end;
+  transform-origin: right;
+} 
+@mixin t-origin-topend {
+  @include t-scaley-end;
+  transform-origin: top;
+} 
+@mixin t-origin-bottomend {
+  @include t-scaley-end;
+  transform-origin: bottom;
+} 
+
+
+
+
+
+/* ~~~~~ ~~~~~ */
+/* ~~~~~ ~~~~~ */
+/* ~~~~~ ~~~~~ */

@@ -1,0 +1,121 @@
+
+
+
+
+
+/* ~~~~~ Media Queries Mixins ~~~~~ */
+
+/*
+
+Common Screen Sizes:
+
+320px: Small Phone
+375px: Medium Phone
+425px: Large Phone
+
+
+768: Table Portrait
+1024: Small Laptop or Tablet Landscape
+
+
+1200: Medium Laptop or (Small or Regular Desktop) 
+1440: Regular Mac Desktop
+1800: Large Desktop
+
+*/
+
+
+/*
+
+1em = 16px
+
+0 - 600px:			Phone
+600 - 900px:    Tablet Portrait
+900 - 1200px:   Tablet Landscape
+1200 - 1800:	 	Normal
+1800 & above:   Big Desktop
+
+*/
+
+
+/*
+
+Largest to Lowest Media Screens
+
+Large Desktop Screen: min-width
+Regular to Smaller Screen: max-width
+
+*/
+
+
+@mixin respond($breakpoint) { 
+  @if $breakpoint == sphone { //320px
+    @media only screen and (max-width: 20em) 
+    { @content };
+  }
+  @if $breakpoint == mphone { //375px
+    @media only screen and (max-width: 23.4375em) 
+    { @content };
+  }
+  @if $breakpoint == lphone { //425px
+    @media only screen and (max-width: 26.5625em) 
+    { @content };
+  }
+  @if $breakpoint == cphone { //600px
+    @media only screen and (max-width: 37.5em) 
+    { @content };
+  }
+
+
+  @if $breakpoint == sptab { //768
+    @media only screen and (max-width: 48em) 
+    { @content }; 
+  }
+  @if $breakpoint == mptab { //900px
+    @media only screen and (max-width: 56.25em) 
+    { @content }; 
+  }
+
+  
+  @if $breakpoint == slaptop { //1024
+    @media only screen and (max-width: 64em) 
+    { @content }; 
+  }
+  @if $breakpoint == mlaptop { //1200px
+    @media only screen and (max-width: 75em) 
+    { @content }; 
+  }
+  @if $breakpoint == ldesktop { //1800
+    @media only screen and (min-width: 112.5em) 
+    { @content }; 
+  }
+}
+
+
+
+
+/*
+
+Variables ($):
+$c-darkblue;
+abs.$vars-c-darkblue;
+
+
+
+Functions ( @include function_name() {content..} ):
+@include respond(phone) {}
+@include abs.fns-respond(ptab) {}
+
+
+
+Mixins ( @include mixin_name ):
+@include flexCenter;
+@include abs.mxs-flexCenter;
+
+*/
+
+
+
+/* ~~~~~ ~~~~~ */
+/* ~~~~~ ~~~~~ */
+/* ~~~~~ ~~~~~ */
