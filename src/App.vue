@@ -1,22 +1,20 @@
-<template> 
-	<Navbar />
+<template>
+  <navbar />
   <router-view />
-  <Footer />
+  <my-footer />
 </template>
 
 <script>
 // @ is an alias to /src
-import Navbar from "@/components/Navbar.vue";
-import Footer from "@/components/Footer.vue";
+import navbar from "@/components/Navbar.vue";
+import myFooter from "@/components/Footer.vue";
 
 export default {
   components: {
-    Navbar,
-    Footer,
+    navbar,
+    myFooter
   }
 };
 </script>
 
-<style lang="scss">
-
-</style>
+<style lang="scss"></style>
