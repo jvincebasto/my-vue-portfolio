@@ -28,14 +28,34 @@ Body
 
 */
 
+/*
 @font-face {
 	font-family: headline;
 	src: url(./../assets/fonts/Oswald/Oswald-VariableFont_wght.ttf) format('truetype');
 	font-weight: 600;
 }
+*/
 
 @font-face {
-	font-family: heading;
+	font-family: hbold;
+	src: url(./../assets/fonts/RobotoSlab/RobotoSlab-VariableFont_wght.ttf) format('truetype');
+	font-weight: 600;
+}
+@font-face {
+	font-family: hbody;
+	src: url(./../assets/fonts/RobotoSlab/RobotoSlab-VariableFont_wght.ttf) format('truetype');
+	font-weight: 300;
+}
+@font-face {
+	font-family: hthin;
+	src: url(./../assets/fonts/RobotoSlab/RobotoSlab-VariableFont_wght.ttf) format('truetype');
+	font-weight: 100;
+}
+
+
+
+@font-face {
+	font-family: tbold;
 	src: url(./../assets/fonts/Roboto/Roboto-Bold.ttf) format('truetype');
 }
 @font-face {
@@ -146,7 +166,7 @@ max-width: 75ch;
 */
 
 h1,h2,h3,h4,h5,h6 {
-	font-family: heading, serif;
+	font-family: hbody, serif;
 }
 
 h1 { font-size: 4rem; }

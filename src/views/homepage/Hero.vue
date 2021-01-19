@@ -52,7 +52,7 @@
     <div class="section-hero--height profile">
       <img
         id="profile_picture"
-        src="@/assets/imgs/profile.png"
+        src="@/assets/imgs/profile.webp"
         alt="profile-picture"
       />
     </div>
@@ -167,61 +167,52 @@ export default {
   }
 
   &-primary {
-    font-family: headline;
-    text-transform: uppercase;
-    color: abs.$vars-c-darkblue;
+    display: block;
+    font-family: hbody;
+    text-transform: lowercase;
+    color: rgba(abs.$vars-c-black, 0.8);
 
-    // font-size: 7.8rem;
-    font-size: 8.4rem;
+    font-size: 7.8rem;
     letter-spacing: -0.5rem;
-    line-height: 1;
+    line-height: 0.9;
 
-    margin-bottom: 0.5rem;
-    text-shadow: 0.1rem 0.1rem 0.1rem abs.$vars-c-black,
-      0.2rem 0.2rem 0.2rem abs.$vars-c-black,
-      0.3rem 0.3rem 0.3rem abs.$vars-c-black;
+    margin-bottom: 0.3rem;
 
     @include abs.fns-respond(mptab) {
-      font-size: 7.4rem;
     }
     @include abs.fns-respond(sptab) {
+      text-transform: capitalize;
+      font-size: 5.8rem;
       color: abs.$vars-c-lightblue;
-      text-shadow: none;
-      font-size: 6.4rem;
     }
 
-    & > span:first-child {
-      font-size: inherit;
-      margin-left: -0.4rem;
-      color: abs.$vars-c-black;
-
+    & > span {
+      display: inline-block;
       text-transform: capitalize;
-      text-shadow: none;
-      color: rgba(abs.$vars-c-black, 0.6);
+      // font-family: hthin;
+    }
+    & > span:first-child {
+      color: abs.$vars-c-darkblue;
 
       @include abs.fns-respond(sptab) {
-        color: rgba(abs.$vars-c-white, 0.6);
+        color: rgba(abs.$vars-c-white, 0.8);
       }
     }
     &--nickname {
-      margin-right: 1.5rem;
-      text-shadow: inherit;
-      // text-shadow: none;
-      color: rgba(abs.$vars-c-lightblue, 0.8);
+      color: abs.$vars-c-darkblue;
 
       @include abs.fns-respond(sptab) {
-        margin-right: 0.9rem;
         color: rgba(abs.$vars-c-white, 0.8);
       }
     }
   }
 
   &-secondary {
+    display: block;
     text-transform: uppercase;
-    letter-spacing: 1rem;
+    letter-spacing: 1.2rem;
 
-    display: inline-block;
-    margin: 0 0 3rem 0.4rem;
+    margin-bottom: 3rem;
 
     @include abs.fns-respond(mptab) {
       letter-spacing: 0.8rem;
@@ -294,7 +285,7 @@ export default {
 
 .section-bg {
   width: 100%;
-  max-width: 55%;
+  max-width: 50%;
 
   position: absolute;
   top: 0;
@@ -316,8 +307,8 @@ export default {
     width: 100%;
     background: linear-gradient(
       135deg,
-      abs.$vars-c-lightblue,
-      abs.$vars-c-darkblue
+      abs.$vars-c-darkblue,
+      abs.$vars-c-lightblue
     );
 
     @include abs.fns-respond(sptab) {
@@ -502,10 +493,10 @@ export default {
     right: -25%;
   }
   @include abs.fns-respond(mptab) {
-    top: 5%;
     right: -32%;
   }
   @include abs.fns-respond(sptab) {
+    top: 5%;
     width: 100rem;
     right: unset;
     left: 50%;
@@ -526,5 +517,7 @@ export default {
   background-image: url(./../../assets/imgs/bg-whitebox.png);
   background-size: cover;
   background-repeat: no-repeat;
+
+  // display: none;
 }
 </style>
