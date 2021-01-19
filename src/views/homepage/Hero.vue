@@ -161,6 +161,9 @@ export default {
     @include abs.fns-respond(sptab) {
       margin-top: 50rem;
     }
+    @include abs.fns-respond(lphone) {
+      margin-top: 80rem;
+    }
   }
 
   &-primary {
@@ -245,6 +248,7 @@ export default {
     }
     @include abs.fns-respond(lphone) {
       max-width: 32ch;
+      margin-bottom: 6rem;
     }
     @include abs.fns-respond(sphone) {
       max-width: 25ch;
