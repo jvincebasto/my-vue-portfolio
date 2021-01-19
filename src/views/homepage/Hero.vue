@@ -3,10 +3,8 @@
     <div class="section-margin">
       <div class="headline headline-block">
         <h1 class="headline-primary">
-          <span class="headline-primary text-lightblue">I’m</span> John <br />
-          <span
-            class="headline-primary headline-primary--nickname text-lightblue"
-            >Vince</span
+          <span class="headline-primary">I’m</span> John <br />
+          <span class="headline-primary headline-primary--nickname">Vince</span
           >nt Basto
         </h1>
         <span class="headline-secondary text-fade">
@@ -41,8 +39,8 @@
     </div>
 
     <div class="section-bg section-hero--height">
-      <div class="section-bg section-bg--color" id="bg_whiteboxes">&nbsp;</div>
-
+      <div class="section-bg section-bg--color">&nbsp;</div>
+      <div class="section-bg" id="bg_whiteboxes">&nbsp;</div>
       <div
         class="section-bg__gradient
 			section-bg__gradient-left"
@@ -112,11 +110,26 @@ export default {
     position: relative;
     // background: blue;
 
+    @include abs.fns-respond(sptab) {
+      background: linear-gradient(
+        135deg,
+        abs.$vars-c-lightblue 25%,
+        abs.$vars-c-darkblue 50%
+      );
+    }
+    @include abs.fns-respond(lphone) {
+      background: linear-gradient(
+        135deg,
+        abs.$vars-c-lightblue 20%,
+        abs.$vars-c-darkblue 45%
+      );
+    }
+
     &--height {
       height: 80rem;
 
       @include abs.fns-respond(sptab) {
-        height: 160rem;
+        height: 200rem;
         padding-bottom: 14rem;
       }
     }
@@ -161,7 +174,9 @@ export default {
     line-height: 1;
 
     margin-bottom: 0.5rem;
-    text-shadow: 0.2rem 0.2rem 0.2rem abs.$vars-c-black;
+    text-shadow: 0.1rem 0.1rem 0.1rem abs.$vars-c-black,
+      0.2rem 0.2rem 0.2rem abs.$vars-c-black,
+      0.3rem 0.3rem 0.3rem abs.$vars-c-black;
 
     @include abs.fns-respond(mptab) {
       font-size: 7.4rem;
@@ -178,19 +193,22 @@ export default {
       color: abs.$vars-c-black;
 
       text-transform: capitalize;
-      // text-shadow: none;
+      text-shadow: none;
+      color: rgba(abs.$vars-c-black, 0.6);
 
       @include abs.fns-respond(sptab) {
-        color: rgba(abs.$vars-c-white, 0.8) !important;
+        color: rgba(abs.$vars-c-white, 0.6);
       }
     }
     &--nickname {
       margin-right: 1.5rem;
       text-shadow: inherit;
+      // text-shadow: none;
+      color: rgba(abs.$vars-c-lightblue, 0.8);
 
       @include abs.fns-respond(sptab) {
         margin-right: 0.9rem;
-        color: rgba(abs.$vars-c-white, 0.8) !important;
+        color: rgba(abs.$vars-c-white, 0.8);
       }
     }
   }
@@ -272,12 +290,14 @@ export default {
 
 .section-bg {
   width: 100%;
-  max-width: 50%;
+  max-width: 55%;
 
   position: absolute;
   top: 0;
   right: 0;
   z-index: -10;
+
+  clip-path: polygon(10rem 0, 100% 0, 100% 100%, 0 100%);
 
   & * {
     max-width: unset;
@@ -289,10 +309,15 @@ export default {
 
   &--color {
     height: inherit;
-    background: abs.$vars-c-darkblue;
+    width: 100%;
+    background: linear-gradient(
+      135deg,
+      abs.$vars-c-lightblue,
+      abs.$vars-c-darkblue
+    );
 
     @include abs.fns-respond(sptab) {
-      background: rgba(abs.$vars-c-lightblue, 0.4);
+      display: none;
     }
   }
 
@@ -305,17 +330,24 @@ export default {
     left: 0;
 
     &-left {
+      height: 120%;
+      width: 10rem;
+
       right: unset;
-      left: -0.5rem;
+      left: 4rem;
+      top: -10%;
 
       @include abs.fns-respond(sptab) {
         display: none;
       }
 
       background: linear-gradient(to right, abs.$vars-c-white, transparent),
-        linear-gradient(to right, abs.$vars-c-white, transparent 75%),
-        linear-gradient(to right, abs.$vars-c-white, transparent 50%),
-        linear-gradient(to right, abs.$vars-c-white, transparent 25%);
+        linear-gradient(to right, abs.$vars-c-white, transparent 98%),
+        linear-gradient(to right, abs.$vars-c-white, transparent 96%),
+        linear-gradient(to right, abs.$vars-c-white, transparent 94%),
+        linear-gradient(to right, abs.$vars-c-white, transparent 92%);
+
+      transform: rotateZ(7deg);
     }
 
     &-top {
@@ -455,7 +487,9 @@ export default {
   top: -5%;
   right: -10%;
 
-  filter: drop-shadow(1.5rem 1rem 0.5rem rgba(abs.$vars-c-black, 0.3));
+  filter: drop-shadow(0.6rem 0.6rem 0.6rem rgba(abs.$vars-c-black, 0.3))
+    drop-shadow(0.7rem 0.7rem 0.7rem rgba(abs.$vars-c-black, 0.3))
+    drop-shadow(0.8rem 0.8rem 0.8rem rgba(abs.$vars-c-black, 0.3));
 
   @include abs.fns-respond(mlaptop) {
     right: -15%;
@@ -464,6 +498,7 @@ export default {
     right: -25%;
   }
   @include abs.fns-respond(mptab) {
+    top: 5%;
     right: -32%;
   }
   @include abs.fns-respond(sptab) {

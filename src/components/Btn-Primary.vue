@@ -46,7 +46,9 @@ export default {
     border: 0.2rem solid abs.$vars-c-darkblue;
     padding: 0.6rem 3rem;
 
-    filter: drop-shadow(0rem 0.2rem 0.2rem rgba(abs.$vars-c-black, 0.6));
+    box-shadow: 0rem 0.1rem 0.1rem rgba(abs.$vars-c-black, 0.5),
+      0.1rem 0.2rem 0.2rem rgba(abs.$vars-c-black, 0.5),
+      0.2rem 0.3rem 0.3rem rgba(abs.$vars-c-black, 0.5);
 
     @include abs.fns-respond(sptab) {
       border-color: abs.$vars-c-lightblue;
