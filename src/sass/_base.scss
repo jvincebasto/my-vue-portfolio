@@ -197,9 +197,9 @@ label {
 	margin: 0;
 	box-sizing: inherit;
 
-	outline: none !important;
-	-webkit-tap-highlight-color: transparent !important;
-	box-shadow: none;
+	// outline: none !important;
+	// -webkit-tap-highlight-color: transparent !important;
+	// box-shadow: none;
 }
 
 html { scroll-behavior: smooth; }
@@ -304,10 +304,10 @@ body {
 		opacity: .8;
 	}
 	&-darkblue {
-		color: abs.$vars-c-darkblue !important;
+		color: abs.$vars-c-darkblue;
 	}
 	&-lightblue {
-		color: abs.$vars-c-lightblue !important;
+		color: abs.$vars-c-lightblue;
 	}
 
 	&-uppercase {

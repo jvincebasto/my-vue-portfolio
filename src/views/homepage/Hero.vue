@@ -269,6 +269,8 @@ export default {
   }
   &-headline ul li {
     margin-right: 3rem;
+    border-radius: 10rem;
+    overflow: hidden;
 
     @include abs.fns-respond(lphone) {
       margin-right: 0;

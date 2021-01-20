@@ -43,8 +43,47 @@ export default {
 
     border-radius: 10rem;
     border: 0.2rem solid abs.$vars-c-darkblue;
-
     padding: 0.6rem 3rem;
+
+    position: relative;
+
+    &::before {
+      content: "";
+      display: block;
+
+      height: 100%;
+      position: absolute;
+      top: 0;
+      z-index: -5;
+      background: rgba(abs.$vars-c-lightblue, 0);
+
+      width: 0;
+      right: 0;
+      transform-origin: right;
+
+      transition: width 0.3s ease-in-out;
+    }
+    &:hover::before {
+      width: 100%;
+      right: unset;
+      left: 0;
+      transform-origin: left;
+      background: rgba(abs.$vars-c-lightblue, 1);
+    }
+    &::after {
+      content: "";
+      display: block;
+
+      height: 100%;
+      width: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -10;
+
+      background: transparent;
+    }
 
     @include abs.fns-respond(sptab) {
       border-color: abs.$vars-c-lightblue;
