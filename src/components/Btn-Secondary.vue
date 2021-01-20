@@ -61,7 +61,7 @@ export default {
       right: 0;
       transform-origin: right;
 
-      transition: width 0.3s ease-in-out;
+      transition: all 0.3s ease-in-out;
     }
     &:hover::before {
       width: 100%;

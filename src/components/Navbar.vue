@@ -91,10 +91,46 @@
         // margin-right: 1.5rem;
       }
 
+      & a::before {
+        content: "";
+        display: block;
+
+        height: 0.2rem;
+        position: absolute;
+        bottom: 0;
+        z-index: -5;
+        background: rgba(abs.$vars-c-lightblue, 0);
+
+        width: 0;
+        right: 0;
+        transform-origin: right;
+
+        transition: all 0.3s ease-in-out;
+      }
+      &:hover a::before {
+        width: 100%;
+        right: unset;
+        left: 0;
+        transform-origin: left;
+        background: rgba(abs.$vars-c-lightblue, 1);
+      }
+
       & a {
+        display: block;
+        height: 100%;
+        width: 100%;
+
         text-align: center;
         white-space: pre;
         color: abs.$vars-c-white;
+
+        position: relative;
+
+        &:hover {
+          color: abs.$vars-c-lightblue;
+          // font-weight: bold;
+          transition: all 1s 1s cubic-bezier(0.2, -0.5, 0.4, 1.75);
+        }
 
         @include abs.fns-respond(cphone) {
           // padding: .5rem 2rem;
@@ -116,14 +152,56 @@
       display: none;
     }
   }
-  &-logo ul li a {
-    text-transform: uppercase;
-    white-space: pre;
-    font-family: tbody;
+  &-logo ul li {
+    border-radius: 1rem;
+    overflow: hidden;
+    // background: crimson;
 
-    padding: 0.6rem 3rem;
-    color: abs.$vars-c-lightblue;
-    border: 0.3rem solid abs.$vars-c-lightblue;
+    & a::before {
+      content: "";
+      display: block;
+
+      height: 100%;
+      position: absolute;
+      bottom: 0;
+      z-index: -5;
+      background: rgba(abs.$vars-c-darkblue, 0);
+
+      width: 0;
+      right: 0;
+      transform-origin: right;
+
+      transition: all 0.3s ease-in-out;
+    }
+    &:hover a::before {
+      width: 100%;
+      right: unset;
+      left: 0;
+      transform-origin: left;
+      background: rgba(abs.$vars-c-darkblue, 1);
+    }
+
+    a {
+      text-transform: uppercase;
+      white-space: pre;
+      font-family: tbody;
+      display: block;
+
+      padding: 0.3rem 3rem;
+      color: abs.$vars-c-lightblue;
+      border: 0.2rem solid abs.$vars-c-lightblue;
+      border-radius: 1rem;
+
+      position: relative;
+
+      &:hover {
+        color: rgba(abs.$vars-c-white, 0.8);
+        border-color: abs.$vars-c-darkblue;
+
+        transition: color 1s 1s, border-color 1s 1.5s;
+        transition-timing-function: cubic-bezier(0.2, -0.5, 0.4, 1.75);
+      }
+    }
   }
 }
 
