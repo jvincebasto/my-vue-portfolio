@@ -121,7 +121,7 @@ export default {
       background: linear-gradient(
         135deg,
         abs.$vars-c-lightblue,
-        abs.$vars-c-darkblue 30%
+        abs.$vars-c-darkblue 35%
       );
     }
 
@@ -398,7 +398,7 @@ export default {
     }
 
     &--1 {
-      background: rgba(abs.$vars-c-black, 0.1);
+      background: rgba(abs.$vars-c-black, 0.2);
     }
     &--2 {
       background: linear-gradient(
