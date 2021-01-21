@@ -5,6 +5,7 @@
     </a>
   </template>
   <template v-else>
+    <!-- <input type="submit" class="btn btn--primary" :value="Button Name"/> -->
     <div type="submit" class="btn btn--primary">
       <slot name="title">Primary Button Submit</slot>
     </div>
@@ -50,10 +51,6 @@ export default {
       0.2rem 0.3rem 0.3rem rgba(abs.$vars-c-black, 0.5);
 
     position: relative;
-
-    display: flex;
-    justify-content: center;
-    align-items: center;
 
     @include abs.fns-respond(sptab) {
       border-color: abs.$vars-c-lightblue;

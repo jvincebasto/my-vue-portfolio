@@ -49,10 +49,6 @@ export default {
 
     position: relative;
 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
     @include abs.fns-respond(sptab) {
       color: abs.$vars-c-darkblue;
     }

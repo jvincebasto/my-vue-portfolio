@@ -28,7 +28,7 @@
 
   & div {
     height: 120%;
-    margin-left: -1rem;
+    margin-left: -5rem;
     background-image: linear-gradient(
       to right,
       abs.$vars-c-lightblue,
