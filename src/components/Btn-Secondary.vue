@@ -60,6 +60,7 @@ export default {
     &::before {
       content: "";
       display: block;
+      margin-left: -1rem;
 
       height: 120%;
       position: absolute;

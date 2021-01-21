@@ -24,11 +24,11 @@
   position: relative;
 
   display: flex;
-  justify-content: center;
   align-items: center;
 
   & div {
-    margin: -1rem;
+    height: 120%;
+    margin-left: -1rem;
     background-image: linear-gradient(
       to right,
       abs.$vars-c-lightblue,
