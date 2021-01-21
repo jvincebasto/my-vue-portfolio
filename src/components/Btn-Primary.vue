@@ -107,12 +107,13 @@ export default {
       content: "";
       display: block;
 
-      height: 100%;
-      width: 100%;
+      height: 120%;
+      width: 120%;
 
       position: absolute;
-      top: 0;
-      left: 0;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
       z-index: -10;
 
       background: abs.$vars-c-darkblue;
