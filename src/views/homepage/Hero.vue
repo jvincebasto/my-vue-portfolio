@@ -113,15 +113,15 @@ export default {
     @include abs.fns-respond(sptab) {
       background: linear-gradient(
         135deg,
-        abs.$vars-c-lightblue 25%,
-        abs.$vars-c-darkblue 50%
+        abs.$vars-c-lightblue,
+        abs.$vars-c-darkblue 40%
       );
     }
     @include abs.fns-respond(lphone) {
       background: linear-gradient(
         135deg,
-        abs.$vars-c-lightblue 20%,
-        abs.$vars-c-darkblue 45%
+        abs.$vars-c-lightblue,
+        abs.$vars-c-darkblue 30%
       );
     }
 
@@ -278,10 +278,13 @@ export default {
 
       display: flex;
       justify-content: center;
+      align-items: center;
+      margin-bottom: 1.5rem;
     }
   }
   &-headline ul li:last-child {
     margin-right: 0;
+    margin-bottom: 0;
   }
 }
 
@@ -350,14 +353,14 @@ export default {
     &-top {
       z-index: 10;
 
-      height: 5%;
+      height: 7.5rem;
       display: none;
 
       background: linear-gradient(to bottom, abs.$vars-c-black, transparent),
-        linear-gradient(to bottom, abs.$vars-c-black, transparent 90%),
-        linear-gradient(to bottom, abs.$vars-c-black, transparent 80%),
-        linear-gradient(to bottom, abs.$vars-c-black, transparent 70%),
-        linear-gradient(to bottom, abs.$vars-c-black, transparent 60%);
+        linear-gradient(to bottom, abs.$vars-c-black, transparent 99%),
+        linear-gradient(to bottom, abs.$vars-c-black, transparent 98%),
+        linear-gradient(to bottom, abs.$vars-c-black, transparent 97%),
+        linear-gradient(to bottom, abs.$vars-c-black, transparent 96%);
 
       @include abs.fns-respond(cphone) {
         display: unset;

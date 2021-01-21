@@ -39,7 +39,7 @@ export default {
 
   &--primary {
     color: abs.$vars-c-white;
-    font-family: tthin;
+    font-family: tlight;
 
     border-radius: 10rem;
     border: 0.2rem solid abs.$vars-c-darkblue;
@@ -51,10 +51,25 @@ export default {
 
     position: relative;
 
+    @include abs.fns-respond(sptab) {
+      border-color: abs.$vars-c-lightblue;
+
+      color: rgba(abs.$vars-c-black, 1);
+      font-weight: bold;
+    }
+    @include abs.fns-respond(lphone) {
+      width: 100%;
+      text-align: center;
+    }
+
     &:hover {
       color: abs.$vars-c-darkblue;
+      transition: all 0.3s ease-in-out;
       font-weight: bold;
-      transition: all 1s 1s cubic-bezier(0.2, -0.5, 0.4, 1.75);
+
+      @include abs.fns-respond(sptab) {
+        color: rgba(abs.$vars-c-lightblue, 1);
+      }
     }
 
     &::before {
@@ -72,6 +87,10 @@ export default {
       transform-origin: right;
 
       transition: all 0.3s ease-in-out;
+
+      @include abs.fns-respond(sptab) {
+        background: rgba(abs.$vars-c-black, 0);
+      }
     }
     &:hover::before {
       width: 100%;
@@ -79,6 +98,10 @@ export default {
       left: 0;
       transform-origin: left;
       background: rgba(abs.$vars-c-lightblue, 1);
+
+      @include abs.fns-respond(sptab) {
+        background: rgba(abs.$vars-c-black, 0.9);
+      }
     }
     &::after {
       content: "";
@@ -93,19 +116,10 @@ export default {
       z-index: -10;
 
       background: abs.$vars-c-darkblue;
-    }
 
-    @include abs.fns-respond(sptab) {
-      border-color: abs.$vars-c-lightblue;
-      background: abs.$vars-c-lightblue;
-      color: abs.$vars-c-darkblue;
-      font-family: tbody;
-    }
-    @include abs.fns-respond(lphone) {
-      width: 100%;
-      text-align: center;
-
-      margin-bottom: 1.5rem;
+      @include abs.fns-respond(sptab) {
+        background: abs.$vars-c-lightblue;
+      }
     }
   }
 }

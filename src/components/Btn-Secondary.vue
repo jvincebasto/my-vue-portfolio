@@ -40,12 +40,18 @@ export default {
   &--secondary {
     background: transparent;
     color: abs.$vars-c-darkblue;
+    font-family: tlight;
+    font-weight: bold;
 
     border-radius: 10rem;
     border: 0.2rem solid abs.$vars-c-darkblue;
     padding: 0.6rem 3rem;
 
     position: relative;
+
+    @include abs.fns-respond(sptab) {
+      color: abs.$vars-c-darkblue;
+    }
 
     &::before {
       content: "";
@@ -62,6 +68,10 @@ export default {
       transform-origin: right;
 
       transition: all 0.3s ease-in-out;
+
+      @include abs.fns-respond(sptab) {
+        background: rgba(abs.$vars-c-lightblue, 0);
+      }
     }
     &:hover::before {
       width: 100%;
@@ -69,6 +79,10 @@ export default {
       left: 0;
       transform-origin: left;
       background: rgba(abs.$vars-c-lightblue, 1);
+
+      @include abs.fns-respond(sptab) {
+        background: rgba(abs.$vars-c-lightblue, 0.1);
+      }
     }
     &::after {
       content: "";
@@ -91,7 +105,6 @@ export default {
     }
     @include abs.fns-respond(lphone) {
       width: 100%;
-      margin-bottom: 1.5rem;
     }
   }
 }

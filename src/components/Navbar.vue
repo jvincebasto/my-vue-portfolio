@@ -58,11 +58,11 @@
   background: rgba(abs.$vars-c-black, 0.6);
 
   @include abs.fns-respond(cphone) {
-    background: linear-gradient(to bottom, abs.$vars-c-black, transparent),
-      linear-gradient(to bottom, abs.$vars-c-black, transparent 98%),
-      linear-gradient(to bottom, abs.$vars-c-black, transparent 96%),
-      linear-gradient(to bottom, abs.$vars-c-black, transparent 94%),
-      linear-gradient(to bottom, abs.$vars-c-black, transparent 92%);
+    background: linear-gradient(to bottom, abs.$vars-c-black 60%, transparent),
+      linear-gradient(to bottom, abs.$vars-c-black 60%, transparent 99%),
+      linear-gradient(to bottom, abs.$vars-c-black 60%, transparent 98%),
+      linear-gradient(to bottom, abs.$vars-c-black 60%, transparent 97%),
+      linear-gradient(to bottom, abs.$vars-c-black 60%, transparent 96%);
   }
 
   &-flex {
@@ -165,7 +165,7 @@
       position: absolute;
       bottom: 0;
       z-index: -5;
-      background: rgba(abs.$vars-c-darkblue, 0);
+      background: rgba(abs.$vars-c-lightblue, 0);
 
       width: 0;
       right: 0;
@@ -178,7 +178,13 @@
       right: unset;
       left: 0;
       transform-origin: left;
-      background: rgba(abs.$vars-c-darkblue, 1);
+      background: rgba(abs.$vars-c-lightblue, 0.9);
+    }
+    &:hover a {
+      color: rgba(abs.$vars-c-darkblue, 1);
+      // border-color: abs.$vars-c-darkblue;
+
+      transition: all 0.3s cubic-bezier(0.2, -0.5, 0.4, 1.75);
     }
 
     a {
@@ -193,14 +199,6 @@
       border-radius: 1rem;
 
       position: relative;
-
-      &:hover {
-        color: rgba(abs.$vars-c-white, 0.8);
-        border-color: abs.$vars-c-darkblue;
-
-        transition: color 1s 1s, border-color 1s 1.5s;
-        transition-timing-function: cubic-bezier(0.2, -0.5, 0.4, 1.75);
-      }
     }
   }
 }
