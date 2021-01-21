@@ -49,6 +49,10 @@ export default {
 
     position: relative;
 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
     @include abs.fns-respond(sptab) {
       color: abs.$vars-c-darkblue;
     }
@@ -72,8 +76,8 @@ export default {
       @include abs.fns-respond(sptab) {
         background: rgba(abs.$vars-c-lightblue, 0);
       }
-      @include abs.fns-respond(lphone) {
-        transition: all 0.6s ease-in-out;
+      @include abs.fns-respond(sptab) {
+        transition: all 0.3s ease-in-out;
       }
     }
     &:hover::before {
