@@ -24,6 +24,7 @@
   position: relative;
 
   & div {
+    margin-left: -0.5rem;
     background-image: linear-gradient(
       to right,
       abs.$vars-c-lightblue,

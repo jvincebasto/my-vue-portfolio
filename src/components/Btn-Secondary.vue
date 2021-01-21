@@ -57,7 +57,7 @@ export default {
       content: "";
       display: block;
 
-      height: 100%;
+      height: 120%;
       position: absolute;
       top: 0;
       z-index: -5;
@@ -72,9 +72,12 @@ export default {
       @include abs.fns-respond(sptab) {
         background: rgba(abs.$vars-c-lightblue, 0);
       }
+      @include abs.fns-respond(lphone) {
+        transition: all 0.6s ease-in-out;
+      }
     }
     &:hover::before {
-      width: 100%;
+      width: 120%;
       right: unset;
       left: 0;
       transform-origin: left;
