@@ -67,27 +67,27 @@
             <ul class="category-list category-list--skills">
               <li>
                 <span>CSS</span>
-                <pg-bar class="progress-bar--css"></pg-bar>
+                <pg-bar :pgBarFill="pbPercent(80)"></pg-bar>
               </li>
               <li>
                 <span>JavaScript</span>
-                <pg-bar class="progress-bar--js"></pg-bar>
+                <pg-bar :pgBarFill="pbPercent(78)"></pg-bar>
               </li>
               <li>
                 <span>PHP</span>
-                <pg-bar class="progress-bar--php"></pg-bar>
+                <pg-bar :pgBarFill="pbPercent(68)"></pg-bar>
               </li>
               <li>
                 <span>SQL</span>
-                <pg-bar class="progress-bar--sql"></pg-bar>
+                <pg-bar :pgBarFill="pbPercent(75)"></pg-bar>
               </li>
               <li>
                 <span>Laravel</span>
-                <pg-bar class="progress-bar--laravel"></pg-bar>
+                <pg-bar :pgBarFill="pbPercent(65)"></pg-bar>
               </li>
               <li>
                 <span>Vue Js</span>
-                <pg-bar class="progress-bar--vue"></pg-bar>
+                <pg-bar :pgBarFill="pbPercent(75)"></pg-bar>
               </li>
             </ul>
           </div>
@@ -105,6 +105,13 @@ export default {
   components: {
     btnRadios,
     pgBar
+  },
+  methods: {
+    pbPercent(percent = 55) {
+      let fillWidth = ` width: ${parseFloat(percent)}% `;
+
+      return fillWidth;
+    }
   }
 };
 </script>

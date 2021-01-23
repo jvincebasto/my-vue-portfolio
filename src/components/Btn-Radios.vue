@@ -21,11 +21,11 @@
   }
 
   &-radio div {
-    height: 2.2rem;
-    width: 2.2rem;
+    height: 2.4rem;
+    width: 2.4rem;
 
     border-radius: 10rem;
-    border: 0.3rem solid abs.$vars-c-black;
+    border: 0.4rem solid abs.$vars-c-black;
 
     margin-right: 0.6rem;
     background: abs.$vars-c-lightblue;

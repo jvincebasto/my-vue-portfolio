@@ -24,12 +24,12 @@
         <div class="btn-headline">
           <ul>
             <li>
-              <btn-primary :btnType="'link'" href="#about">
+              <btn-primary :btnObj="btnlink('link', '#about')">
                 <template #title>About Me</template>
               </btn-primary>
             </li>
             <li>
-              <btn-secondary :btnType="'link'" href="#contacts">
+              <btn-secondary :btnObj="btnlink('link', '#contacts')">
                 <template #title>Contact</template>
               </btn-secondary>
             </li>
@@ -93,6 +93,16 @@ export default {
   components: {
     btnPrimary,
     btnSecondary
+  },
+  methods: {
+    btnlink(type = "link", link = "#") {
+      const btnObj = {
+        type,
+        link
+      };
+
+      return btnObj;
+    }
   }
 };
 </script>
@@ -173,7 +183,7 @@ export default {
     color: rgba(abs.$vars-c-black, 0.8);
 
     font-size: 7.8rem;
-    letter-spacing: -0.5rem;
+    letter-spacing: -0.3rem;
     line-height: 0.9;
 
     margin-bottom: 0.3rem;
@@ -270,7 +280,6 @@ export default {
   &-headline ul li {
     margin-right: 3rem;
     border-radius: 10rem;
-    overflow: hidden;
 
     @include abs.fns-respond(lphone) {
       margin-right: 0;

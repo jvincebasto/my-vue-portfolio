@@ -12,7 +12,23 @@
     <div class="nav-flex section-margin">
       <div class="nav-logo">
         <ul>
-          <li><a href="#">John Vincent</a></li>
+          <li>
+            <btn-secondary
+              :btnObj="btnlink('link', '#')"
+              :btnBorder="'border-radius: 1rem'"
+            >
+              <template #title>John Vincent</template>
+
+              <!--               <template #title>
+                <template v-if="mediaMatch(1024)" @resize="mediaMatch(1024)">
+                  <p>true</p>
+                </template>
+                <template v-else>
+                  <p>false</p>
+                </template>
+              </template> -->
+            </btn-secondary>
+          </li>
         </ul>
       </div>
 
@@ -35,7 +51,77 @@
   </div>
 </template>
 
-<script></script>
+<script>
+import btnSecondary from "@/components/Btn-Secondary.vue";
+
+// let x = window.matchMedia("(max-width: 768px)");
+
+// mediaValidate(media = vw, obj = {}) {
+//   if(media.matches) {
+//     console.log("matched");
+//     return true;
+//   }
+//   else {
+//     console.log("No Media Query Matched")
+//     return false;
+//   }
+// }
+
+// x.addListener(mediaMatch);
+
+// function mediaMatch(width = 1200) {
+//   let vw = window.matchMedia(`(max-width: ${width}px)`);
+
+//   function mediaValidate(media = vw) {
+//     if(media.matches) {
+//       console.log("matched");
+//       return true;
+//     }
+//     else {
+//       console.log("No Media Query Matched")
+//       return false;
+//     }
+//   }
+
+//   vw.addListener(mediaValidate);
+// }
+
+export default {
+  components: {
+    btnSecondary
+  },
+  methods: {
+    btnlink(type = "link", link = "#") {
+      const btnObj = {
+        type,
+        link
+      };
+
+      return btnObj;
+    },
+    mediaMatch(width = 1200) {
+      const filterWidth = parseFloat(width);
+      let vw = window.matchMedia(`(max-width: ${filterWidth}px)`);
+
+      function mediaValidate(media = vw) {
+        if (media.matches) {
+          console.log("matched");
+          return true;
+        } else {
+          console.log("No Media Query Matched");
+          return false;
+        }
+      }
+
+      const bool = mediaValidate();
+      vw.addListener(mediaValidate);
+
+      console.log(bool);
+      return bool;
+    }
+  }
+};
+</script>
 
 <style scoped lang="scss">
 @use "./../sass/abstracts/abstracts" as abs;
@@ -128,8 +214,7 @@
 
         &:hover {
           color: abs.$vars-c-lightblue;
-          // font-weight: bold;
-          transition: all 1s 1s cubic-bezier(0.2, -0.5, 0.4, 1.75);
+          font-weight: bold;
         }
 
         @include abs.fns-respond(cphone) {
@@ -154,51 +239,9 @@
   }
   &-logo ul li {
     border-radius: 1rem;
-    overflow: hidden;
-    // background: crimson;
 
-    & a::before {
-      content: "";
+    & > * {
       display: block;
-
-      height: 100%;
-      position: absolute;
-      bottom: 0;
-      z-index: -5;
-      background: rgba(abs.$vars-c-lightblue, 0);
-
-      width: 0;
-      right: 0;
-      transform-origin: right;
-
-      transition: all 0.3s ease-in-out;
-    }
-    &:hover a::before {
-      width: 100%;
-      right: unset;
-      left: 0;
-      transform-origin: left;
-      background: rgba(abs.$vars-c-lightblue, 0.9);
-    }
-    &:hover a {
-      color: rgba(abs.$vars-c-darkblue, 1);
-      // border-color: abs.$vars-c-darkblue;
-
-      transition: all 0.3s cubic-bezier(0.2, -0.5, 0.4, 1.75);
-    }
-
-    a {
-      text-transform: uppercase;
-      white-space: pre;
-      font-family: tbody;
-      display: block;
-
-      padding: 0.3rem 3rem;
-      color: abs.$vars-c-lightblue;
-      border: 0.2rem solid abs.$vars-c-lightblue;
-      border-radius: 1rem;
-
-      position: relative;
     }
   }
 }

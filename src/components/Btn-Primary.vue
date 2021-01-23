@@ -1,13 +1,23 @@
 <template>
-  <template v-if="type(btnType)">
-    <a class="btn btn--primary">
-      <slot name="title">Primary Button Link</slot>
-    </a>
+  <template v-if="btnType(btnObj)">
+    <div class="btn btn-container" :style="$attrs.btnBorder">
+      <div class="btn-bg"></div>
+      <div class="btn-slide"></div>
+      <div class="btn-border"></div>
+      <a :href="btnLink(btnObj)">
+        <slot name="title">Primary Button - Link</slot>
+      </a>
+    </div>
   </template>
   <template v-else>
-    <!-- <input type="submit" class="btn btn--primary" :value="Button Name"/> -->
-    <div type="submit" class="btn btn--primary">
-      <slot name="title">Primary Button Submit</slot>
+    <div class="btn btn-container" :style="$attrs.btnBorder">
+      <div class="btn-bg"></div>
+      <div class="btn-slide"></div>
+      <div class="btn-border"></div>
+      <label for="submit" class="btn-label">
+        <slot name="title">Primary Button Submit</slot>
+      </label>
+      <input id="submit" type="submit" />
     </div>
   </template>
 </template>
@@ -15,14 +25,21 @@
 <script>
 export default {
   props: {
-    btnType: String
+    btnObj: Object
   },
   methods: {
-    type(type) {
-      if (type === "link") {
+    btnType(obj) {
+      if (obj.type === "link") {
         return true;
       } else {
         return false;
+      }
+    },
+    btnLink(obj) {
+      if (!obj.link) {
+        return "#";
+      } else {
+        return obj.link;
       }
     }
   }
@@ -33,100 +50,114 @@ export default {
 @use "./../sass/abstracts/abstracts" as abs;
 
 .btn {
-  display: block;
-  text-align: center;
+  display: inline-block;
   cursor: pointer;
-  white-space: pre;
 
-  &--primary {
-    color: abs.$vars-c-white;
-    font-family: tlight;
-
+  &-container {
     border-radius: 10rem;
-    border: 0.2rem solid abs.$vars-c-darkblue;
-    padding: 0.6rem 3rem;
-
-    box-shadow: 0rem 0.1rem 0.1rem rgba(abs.$vars-c-black, 0.5),
-      0.1rem 0.2rem 0.2rem rgba(abs.$vars-c-black, 0.5),
-      0.2rem 0.3rem 0.3rem rgba(abs.$vars-c-black, 0.5);
 
     position: relative;
+    overflow: hidden;
 
     @include abs.fns-respond(sptab) {
-      border-color: abs.$vars-c-lightblue;
-
-      color: rgba(abs.$vars-c-black, 1);
-      font-weight: bold;
-    }
-    @include abs.fns-respond(lphone) {
+      height: 100%;
       width: 100%;
-      text-align: center;
     }
+  }
 
-    &:hover {
-      color: abs.$vars-c-darkblue;
-      transition: all 0.3s ease-in-out;
+  & > * {
+    display: block;
+    height: 100%;
+    width: 100%;
+
+    position: absolute;
+    top: 0;
+    left: 0;
+
+    border-radius: inherit;
+    border: 0.2rem solid abs.$vars-c-darkblue;
+
+    @include abs.fns-respond(sptab) {
+      height: inherit;
+      width: inherit;
+      border-color: abs.$vars-c-lightblue;
+    }
+  }
+
+  &-bg {
+    background: abs.$vars-c-darkblue;
+    border: none;
+
+    @include abs.fns-respond(sptab) {
+      background: abs.$vars-c-lightblue;
+    }
+  }
+  &-border {
+    // border-color: abs.$vars-c-black;
+  }
+
+  &-slide {
+    background: rgba(abs.$vars-c-lightblue, 0);
+    border: none;
+    width: 0;
+
+    left: unset;
+    right: 0;
+    transform-origin: right;
+
+    transition: all 0.3s ease-in-out;
+
+    @include abs.fns-respond(lphone) {
+      transition-duration: 0.5s;
+    }
+  }
+  &:hover &-slide {
+    background: rgba(abs.$vars-c-lightblue, 0.8);
+    width: 100%;
+
+    left: 0;
+    transform-origin: left;
+
+    @include abs.fns-respond(sptab) {
+      background: rgba(abs.$vars-c-black, 0.8);
+    }
+  }
+  &:hover > a {
+    color: abs.$vars-c-black;
+    font-weight: bold;
+
+    @include abs.fns-respond(sptab) {
+      color: rgba(abs.$vars-c-white, 0.8);
+    }
+  }
+
+  & > a,
+  &-label {
+    cursor: inherit;
+    font-family: tlight;
+    font-size: 1.8rem;
+    text-transform: uppercase;
+
+    color: rgba(abs.$vars-c-white, 1);
+    white-space: pre;
+
+    border: none;
+    padding: 1rem 3rem;
+
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    @include abs.fns-respond(sptab) {
+      font-family: tthin;
       font-weight: bold;
-
-      @include abs.fns-respond(sptab) {
-        color: rgba(abs.$vars-c-lightblue, 1);
-      }
     }
-
-    &::before {
-      content: "";
-      display: block;
-      margin-left: -1rem;
-
-      height: 120%;
-      position: absolute;
-      top: 0;
-      z-index: -5;
-      background: rgba(abs.$vars-c-lightblue, 0);
-
-      width: 0;
-      right: 0;
-      transform-origin: right;
-
-      transition: all 0.3s ease-in-out;
-
-      @include abs.fns-respond(sptab) {
-        background: rgba(abs.$vars-c-black, 0);
-      }
-      @include abs.fns-respond(sptab) {
-        transition: all 0.3s ease-in-out;
-      }
-    }
-    &:hover::before {
-      width: 120%;
-      right: unset;
-      left: 0;
-      transform-origin: left;
-      background: rgba(abs.$vars-c-lightblue, 1);
-
-      @include abs.fns-respond(sptab) {
-        background: rgba(abs.$vars-c-black, 0.9);
-      }
-    }
-    &::after {
-      content: "";
-      display: block;
-
-      height: 120%;
-      width: 120%;
-
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: -10;
-
-      background: abs.$vars-c-darkblue;
-
-      @include abs.fns-respond(sptab) {
-        background: abs.$vars-c-lightblue;
-      }
-    }
+  }
+  & #submit {
+    height: 0;
+    width: 0;
+    background: blue;
   }
 }
 </style>
