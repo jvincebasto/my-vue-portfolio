@@ -13,20 +13,15 @@
       <div class="nav-logo">
         <ul>
           <li>
+            <!--          :btn-style="styleObj"
+              :btn-event="eventObj(evObj.evt,evObj.elt,evObj.events)"
+ -->
             <btn-secondary
-              :btnObj="btnlink('link', '#')"
-              :btnBorder="'border-radius: 1rem'"
+              :btn-type="linkObj('link', '#')"
+              :btn-bp="bpObj(mediaObj.width, mediaObj.minmax, mediaObj.unit)"
+              :btn-multi-obj="fnTypes"
             >
               <template #title>John Vincent</template>
-
-              <!--               <template #title>
-                <template v-if="mediaMatch(1024)" @resize="mediaMatch(1024)">
-                  <p>true</p>
-                </template>
-                <template v-else>
-                  <p>false</p>
-                </template>
-              </template> -->
             </btn-secondary>
           </li>
         </ul>
@@ -54,71 +49,101 @@
 <script>
 import btnSecondary from "@/components/Btn-Secondary.vue";
 
-// let x = window.matchMedia("(max-width: 768px)");
-
-// mediaValidate(media = vw, obj = {}) {
-//   if(media.matches) {
-//     console.log("matched");
-//     return true;
-//   }
-//   else {
-//     console.log("No Media Query Matched")
-//     return false;
-//   }
-// }
-
-// x.addListener(mediaMatch);
-
-// function mediaMatch(width = 1200) {
-//   let vw = window.matchMedia(`(max-width: ${width}px)`);
-
-//   function mediaValidate(media = vw) {
-//     if(media.matches) {
-//       console.log("matched");
-//       return true;
-//     }
-//     else {
-//       console.log("No Media Query Matched")
-//       return false;
-//     }
-//   }
-
-//   vw.addListener(mediaValidate);
-// }
-
 export default {
   components: {
     btnSecondary
   },
+  data() {
+    //
+
+    const mediaObj = {
+      width: 900,
+      minmax: "min",
+      unit: "px"
+    };
+
+    const styleObj = {
+      container: {
+        borderRadius: "1rem"
+      },
+      bg: {},
+      slide: {},
+      border: {
+        borderColor: "skyblue"
+      },
+      link: {
+        padding: ".5rem 2rem",
+        color: "skyblue"
+      }
+    };
+
+    const evObj = {
+      evt: "container",
+      elt: "slide",
+      events: {
+        onmouseover: {
+          background: "crimson",
+          opacity: 1
+        },
+        onmouseleave: {
+          background: "blue",
+          opacity: 0
+        }
+      }
+    };
+
+    const fnTypes = {
+      styles: {
+        st: styleObj
+      },
+      events: {
+        ev: evObj
+      }
+    };
+    //
+
+    const all = {
+      mediaObj,
+      styleObj,
+      evObj,
+      fnTypes
+    };
+
+    return {
+      all,
+      mediaObj: all.mediaObj,
+      styleObj: all.styleObj,
+      evObj: all.evObj,
+      fnTypes: all.fnTypes
+    };
+  },
   methods: {
-    btnlink(type = "link", link = "#") {
-      const btnObj = {
+    linkObj(type = "link", link = "#") {
+      const obj = {
         type,
         link
       };
-
-      return btnObj;
+      return obj;
     },
-    mediaMatch(width = 1200) {
-      const filterWidth = parseFloat(width);
-      let vw = window.matchMedia(`(max-width: ${filterWidth}px)`);
-
-      function mediaValidate(media = vw) {
-        if (media.matches) {
-          console.log("matched");
-          return true;
-        } else {
-          console.log("No Media Query Matched");
-          return false;
-        }
-      }
-
-      const bool = mediaValidate();
-      vw.addListener(mediaValidate);
-
-      console.log(bool);
-      return bool;
+    bpObj(width, minmax, unit) {
+      const obj = {
+        width,
+        minmax,
+        unit
+      };
+      return obj;
+    },
+    eventObj(evTarget, elTarget, events) {
+      const obj = {
+        evTarget,
+        elTarget,
+        events
+      };
+      return obj;
     }
+  },
+  mounted() {
+    // console.log(this.$data);
   }
 };
 </script>

@@ -24,12 +24,12 @@
         <div class="btn-headline">
           <ul>
             <li>
-              <btn-primary :btnObj="btnlink('link', '#about')">
+              <btn-primary :btnObj="linkObj('link', '#about')">
                 <template #title>About Me</template>
               </btn-primary>
             </li>
             <li>
-              <btn-secondary :btnObj="btnlink('link', '#contacts')">
+              <btn-secondary :btn-type="linkObj('link', '#contacts')">
                 <template #title>Contact</template>
               </btn-secondary>
             </li>
@@ -95,13 +95,12 @@ export default {
     btnSecondary
   },
   methods: {
-    btnlink(type = "link", link = "#") {
-      const btnObj = {
+    linkObj(type = "link", link = "#") {
+      const obj = {
         type,
         link
       };
-
-      return btnObj;
+      return obj;
     }
   }
 };

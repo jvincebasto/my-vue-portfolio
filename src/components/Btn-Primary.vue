@@ -23,6 +23,21 @@
 </template>
 
 <script>
+// let x = window.matchMedia("(max-width: 1024px)");
+
+// function mediaValidate(media) {
+//   if(media.matches) {
+//     console.log("matched");
+//     return true;
+//   }
+//   else {
+//     console.log("No Media Query Matched")
+//     return false;
+//   }
+// }
+
+// x.addListener(mediaValidate);
+
 export default {
   props: {
     btnObj: Object
