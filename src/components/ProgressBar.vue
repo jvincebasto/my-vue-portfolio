@@ -52,9 +52,9 @@ export default {
 
     background-image: linear-gradient(
       to right,
-      abs.$vars-c-lightblue,
-      rgba(abs.$vars-c-lightblue, 0.8) 90%,
-      rgba(abs.$vars-c-lightblue, 0)
+      abs.$vars-c-secondary,
+      rgba(abs.$vars-c-secondary, 0.8) 90%,
+      rgba(abs.$vars-c-secondary, 0)
     );
   }
 

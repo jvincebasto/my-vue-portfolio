@@ -19,9 +19,10 @@ abs.$vars-c-darkblue;
 
 
 
-Functions ( @include function_name() {content..} ):
+Mixins as functions ( @include function_name() {content..} ):
 @include respond(phone) {}
 @include abs.fns-respond(ptab) {}
+
 
 
 

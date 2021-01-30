@@ -1,5 +1,5 @@
 <template>
-  <section class="section section-skills" id="skills">
+  <section data-index="2" class="section section-skills" id="skills">
     <div class="section-margin">
       <hr />
       <div class="section-title">
@@ -98,8 +98,8 @@
 </template>
 
 <script>
-import btnRadios from "@/components/Btn-Radios.vue";
-import pgBar from "@/components/Progress-Bar.vue";
+import btnRadios from "@/components/BtnRadios.vue";
+import pgBar from "@/components/ProgressBar.vue";
 
 export default {
   components: {
@@ -125,7 +125,7 @@ export default {
   }
   &-list--skills {
     & li {
-      @include abs.fns-respond(mphone) {
+      @include abs.mxs-respond(mphone) {
         flex-wrap: wrap;
         margin-bottom: 1.5rem;
       }
@@ -134,7 +134,7 @@ export default {
       margin-right: auto;
       min-width: 50%;
 
-      @include abs.fns-respond(mphone) {
+      @include abs.mxs-respond(mphone) {
         margin-right: unset;
         min-width: 100%;
         margin-bottom: 0.5rem;

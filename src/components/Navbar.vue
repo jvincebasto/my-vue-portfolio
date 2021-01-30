@@ -13,10 +13,8 @@
       <div class="nav-logo">
         <ul>
           <li>
-            <!--          :btn-style="styleObj"
-              :btn-event="eventObj(evObj.evt,evObj.elt,evObj.events)"
- -->
             <btn-secondary
+              data-page="hero"
               :btn-type="linkObj('link', '#')"
               :btn-bp="bpObj(mediaObj.width, mediaObj.minmax, mediaObj.unit)"
               :btn-multi-obj="fnTypes"
@@ -29,9 +27,11 @@
 
       <div class="nav-links">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#skills">Skills</a></li>
-          <li><a href="#contacts">Contact</a></li>
+          <li data-page="about"><a href="#about">About</a></li>
+          <li data-page="skills"><a href="#skills">Skills</a></li>
+          <li data-page="contacts"><a href="#contacts">Contact</a></li>
+          <li class="bubble"></li>
+          <!-- <li><router-link to="/">list</router-link></li> -->
         </ul>
       </div>
     </div>
@@ -47,19 +47,18 @@
 </template>
 
 <script>
-import btnSecondary from "@/components/Btn-Secondary.vue";
+import btnSecondary from "@/components/BtnSecondary.vue";
+import styles from "@/sass/abstracts/_variables.scss";
 
 export default {
   components: {
     btnSecondary
   },
   data() {
-    //
-
     const mediaObj = {
-      width: 900,
+      width: styles.mqSptab,
       minmax: "min",
-      unit: "px"
+      unit: "em"
     };
 
     const styleObj = {
@@ -69,51 +68,47 @@ export default {
       bg: {},
       slide: {},
       border: {
-        borderColor: "skyblue"
+        borderColor: styles.cSecondary
       },
       link: {
         padding: ".5rem 2rem",
-        color: "skyblue"
+        color: styles.cSecondary
       }
     };
 
-    const evObj = {
+    const container = {
       evt: "container",
-      elt: "slide",
       events: {
         onmouseover: {
-          background: "crimson",
-          opacity: 1
+          slide: {
+            background: styles.cPrimary
+          }
         },
         onmouseleave: {
-          background: "blue",
-          opacity: 0
+          link: {
+            color: styles.cSecondary
+          }
         }
       }
     };
 
     const fnTypes = {
       styles: {
-        st: styleObj
+        mqStyles: styleObj
       },
       events: {
-        ev: evObj
+        containerEvent: container
       }
     };
-    //
 
     const all = {
       mediaObj,
-      styleObj,
-      evObj,
       fnTypes
     };
 
     return {
       all,
       mediaObj: all.mediaObj,
-      styleObj: all.styleObj,
-      evObj: all.evObj,
       fnTypes: all.fnTypes
     };
   },
@@ -132,24 +127,22 @@ export default {
         unit
       };
       return obj;
-    },
-    eventObj(evTarget, elTarget, events) {
-      const obj = {
-        evTarget,
-        elTarget,
-        events
-      };
-      return obj;
     }
-  },
-  mounted() {
-    // console.log(this.$data);
   }
 };
 </script>
 
 <style scoped lang="scss">
 @use "./../sass/abstracts/abstracts" as abs;
+
+.bubble {
+  position: absolute;
+  z-index: -100;
+  top: -25%;
+  background: rgba(abs.$vars-c-secondary, 0.2);
+
+  transition: all 0.4s ease-in-out;
+}
 
 /* ~~~~~ Navbar ~~~~~ */
 
@@ -168,7 +161,7 @@ export default {
 
   background: rgba(abs.$vars-c-black, 0.6);
 
-  @include abs.fns-respond(cphone) {
+  @include abs.mxs-respond(cphone) {
     background: linear-gradient(to bottom, abs.$vars-c-black 60%, transparent),
       linear-gradient(to bottom, abs.$vars-c-black 60%, transparent 99%),
       linear-gradient(to bottom, abs.$vars-c-black 60%, transparent 98%),
@@ -181,7 +174,7 @@ export default {
     justify-content: space-between;
     align-items: center;
 
-    @include abs.fns-respond(cphone) {
+    @include abs.mxs-respond(cphone) {
       // justify-content: flex-end;
     }
   }
@@ -196,9 +189,10 @@ export default {
     // background: green;
 
     & li {
-      margin-right: 3rem;
+      margin-right: 1.5rem;
+      border-radius: 1rem;
 
-      @include abs.fns-respond(cphone) {
+      @include abs.mxs-respond(cphone) {
         // margin-right: 1.5rem;
       }
 
@@ -210,7 +204,7 @@ export default {
         position: absolute;
         bottom: 0;
         z-index: -5;
-        background: rgba(abs.$vars-c-lightblue, 0);
+        background: rgba(abs.$vars-c-secondary, 0);
 
         width: 0;
         right: 0;
@@ -223,7 +217,7 @@ export default {
         right: unset;
         left: 0;
         transform-origin: left;
-        background: rgba(abs.$vars-c-lightblue, 1);
+        background: rgba(abs.$vars-c-secondary, 1);
       }
 
       & a {
@@ -236,15 +230,16 @@ export default {
         color: abs.$vars-c-white;
 
         position: relative;
+        padding: 0.2rem 0.8rem;
 
         &:hover {
-          color: abs.$vars-c-lightblue;
+          color: abs.$vars-c-secondary;
           font-weight: bold;
         }
 
-        @include abs.fns-respond(cphone) {
+        @include abs.mxs-respond(cphone) {
           // padding: .5rem 2rem;
-          // border-radius: 10rem;
+          // border-radius: 1rem;
           // background: rgba(abs.$vars-c-black,.1);
         }
       }
@@ -258,7 +253,7 @@ export default {
     display: flex;
     align-items: center;
 
-    @include abs.fns-respond(cphone) {
+    @include abs.mxs-respond(cphone) {
       display: none;
     }
   }
@@ -285,7 +280,7 @@ export default {
 
     display: none;
 
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       display: unset;
     }
   }
@@ -293,7 +288,7 @@ export default {
   &-up--icon {
     height: inherit;
     width: inherit;
-    fill: abs.$vars-c-lightblue;
+    fill: abs.$vars-c-secondary;
   }
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <footer class="section section-footer" id="contacts">
+  <footer data-index="3" class="section section-footer" id="contacts">
     <div class="section-margin">
       <div class="section-title">
         <h2>Contacts</h2>
@@ -32,14 +32,17 @@
   </footer>
 </template>
 
-<script></script>
+<script>
+// export default {
+// };
+</script>
 
 <style scoped lang="scss">
 @use "./../sass/abstracts/abstracts" as abs;
 
 .section {
   &-footer {
-    min-height: 20rem;
+    min-height: 10rem;
 
     background: rgba(abs.$vars-c-black, 0.9);
 
@@ -81,26 +84,26 @@
 
   opacity: 0.3;
 
-  @include abs.fns-respond(mlaptop) {
+  @include abs.mxs-respond(mlaptop) {
     right: -25%;
   }
-  @include abs.fns-respond(mptab) {
+  @include abs.mxs-respond(mptab) {
     right: -35%;
   }
-  @include abs.fns-respond(sptab) {
+  @include abs.mxs-respond(sptab) {
     opacity: 0.2;
     right: -40%;
   }
-  @include abs.fns-respond(cphone) {
+  @include abs.mxs-respond(cphone) {
     right: -55%;
   }
-  @include abs.fns-respond(lphone) {
+  @include abs.mxs-respond(lphone) {
     right: -75%;
   }
-  @include abs.fns-respond(mphone) {
+  @include abs.mxs-respond(mphone) {
     right: -85%;
   }
-  @include abs.fns-respond(sphone) {
+  @include abs.mxs-respond(sphone) {
     right: -100%;
   }
 }

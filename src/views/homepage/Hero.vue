@@ -1,5 +1,9 @@
 <template>
-  <section class="section section-hero section-hero--height">
+  <section
+    data-index="0"
+    class="section section-hero section-hero--height"
+    id="hero"
+  >
     <div class="section-margin">
       <div class="headline headline-block">
         <h1 class="headline-primary">
@@ -24,7 +28,7 @@
         <div class="btn-headline">
           <ul>
             <li>
-              <btn-primary :btnObj="linkObj('link', '#about')">
+              <btn-primary :btn-type="linkObj('link', '#about')">
                 <template #title>About Me</template>
               </btn-primary>
             </li>
@@ -86,8 +90,8 @@
 </template>
 
 <script>
-import btnPrimary from "@/components/Btn-Primary.vue";
-import btnSecondary from "@/components/Btn-Secondary.vue";
+import btnPrimary from "@/components/BtnPrimary.vue";
+import btnSecondary from "@/components/BtnSecondary.vue";
 
 export default {
   components: {
@@ -119,25 +123,25 @@ export default {
     position: relative;
     // background: blue;
 
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       background: linear-gradient(
         135deg,
-        abs.$vars-c-lightblue,
-        abs.$vars-c-darkblue 40%
+        abs.$vars-c-secondary,
+        abs.$vars-c-primary 40%
       );
     }
-    @include abs.fns-respond(lphone) {
+    @include abs.mxs-respond(lphone) {
       background: linear-gradient(
         135deg,
-        abs.$vars-c-lightblue,
-        abs.$vars-c-darkblue 35%
+        abs.$vars-c-secondary,
+        abs.$vars-c-primary 35%
       );
     }
 
     &--height {
       height: 80rem;
 
-      @include abs.fns-respond(sptab) {
+      @include abs.mxs-respond(sptab) {
         height: 200rem;
         padding-bottom: 14rem;
       }
@@ -147,7 +151,7 @@ export default {
       display: flex;
       align-items: center;
 
-      @include abs.fns-respond(sptab) {
+      @include abs.mxs-respond(sptab) {
         display: flex;
         align-items: center;
 
@@ -167,10 +171,10 @@ export default {
   &-block {
     width: 100%;
 
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       margin-top: 50rem;
     }
-    @include abs.fns-respond(lphone) {
+    @include abs.mxs-respond(lphone) {
       margin-top: 80rem;
     }
   }
@@ -187,12 +191,12 @@ export default {
 
     margin-bottom: 0.3rem;
 
-    @include abs.fns-respond(mptab) {
+    @include abs.mxs-respond(mptab) {
     }
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       text-transform: capitalize;
       font-size: 5.8rem;
-      color: abs.$vars-c-lightblue;
+      color: abs.$vars-c-secondary;
     }
 
     & > span {
@@ -201,16 +205,16 @@ export default {
       // font-family: hthin;
     }
     & > span:first-child {
-      color: abs.$vars-c-darkblue;
+      color: abs.$vars-c-primary;
 
-      @include abs.fns-respond(sptab) {
+      @include abs.mxs-respond(sptab) {
         color: rgba(abs.$vars-c-white, 0.8);
       }
     }
     &--nickname {
-      color: abs.$vars-c-darkblue;
+      color: abs.$vars-c-primary;
 
-      @include abs.fns-respond(sptab) {
+      @include abs.mxs-respond(sptab) {
         color: rgba(abs.$vars-c-white, 0.8);
       }
     }
@@ -223,10 +227,10 @@ export default {
 
     margin-bottom: 3rem;
 
-    @include abs.fns-respond(mptab) {
+    @include abs.mxs-respond(mptab) {
       letter-spacing: 0.8rem;
     }
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       letter-spacing: 0.6rem;
       font-family: tthin;
     }
@@ -236,29 +240,29 @@ export default {
     max-width: 45ch;
     margin-bottom: 3rem;
 
-    @include abs.fns-respond(mptab) {
+    @include abs.mxs-respond(mptab) {
       max-width: 42ch;
     }
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       max-width: 58ch;
       font-family: tthin;
     }
-    @include abs.fns-respond(cphone) {
+    @include abs.mxs-respond(cphone) {
       max-width: 50ch;
     }
-    @include abs.fns-respond(lphone) {
+    @include abs.mxs-respond(lphone) {
       max-width: 32ch;
       margin-bottom: 6rem;
     }
-    @include abs.fns-respond(sphone) {
+    @include abs.mxs-respond(sphone) {
       max-width: 25ch;
     }
   }
   & p span {
     text-transform: capitalize;
 
-    @include abs.fns-respond(sptab) {
-      color: abs.$vars-c-lightblue !important;
+    @include abs.mxs-respond(sptab) {
+      color: abs.$vars-c-secondary !important;
     }
   }
 }
@@ -270,7 +274,7 @@ export default {
 
     // background: green;
 
-    @include abs.fns-respond(lphone) {
+    @include abs.mxs-respond(lphone) {
       width: 100%;
       flex: 1 1 auto;
       flex-wrap: wrap;
@@ -280,7 +284,7 @@ export default {
     margin-right: 3rem;
     border-radius: 10rem;
 
-    @include abs.fns-respond(lphone) {
+    @include abs.mxs-respond(lphone) {
       margin-right: 0;
       width: 100%;
 
@@ -311,7 +315,7 @@ export default {
     max-width: unset;
   }
 
-  @include abs.fns-respond(sptab) {
+  @include abs.mxs-respond(sptab) {
     max-width: unset;
   }
 
@@ -320,11 +324,11 @@ export default {
     width: 100%;
     background: linear-gradient(
       135deg,
-      abs.$vars-c-darkblue,
-      abs.$vars-c-lightblue
+      abs.$vars-c-primary,
+      abs.$vars-c-secondary
     );
 
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       display: none;
     }
   }
@@ -345,7 +349,7 @@ export default {
       left: 4rem;
       top: -10%;
 
-      @include abs.fns-respond(sptab) {
+      @include abs.mxs-respond(sptab) {
         display: none;
       }
 
@@ -370,7 +374,7 @@ export default {
         linear-gradient(to bottom, abs.$vars-c-black, transparent 97%),
         linear-gradient(to bottom, abs.$vars-c-black, transparent 96%);
 
-      @include abs.fns-respond(cphone) {
+      @include abs.mxs-respond(cphone) {
         display: unset;
       }
     }
@@ -401,7 +405,7 @@ export default {
 
     display: none;
 
-    @include abs.fns-respond(sptab) {
+    @include abs.mxs-respond(sptab) {
       display: unset;
     }
 
@@ -499,26 +503,26 @@ export default {
     drop-shadow(0.7rem 0.7rem 0.7rem rgba(abs.$vars-c-black, 0.3))
     drop-shadow(0.8rem 0.8rem 0.8rem rgba(abs.$vars-c-black, 0.3));
 
-  @include abs.fns-respond(mlaptop) {
+  @include abs.mxs-respond(mlaptop) {
     right: -15%;
   }
-  @include abs.fns-respond(slaptop) {
+  @include abs.mxs-respond(slaptop) {
     right: -25%;
   }
-  @include abs.fns-respond(mptab) {
+  @include abs.mxs-respond(mptab) {
     right: -32%;
   }
-  @include abs.fns-respond(sptab) {
+  @include abs.mxs-respond(sptab) {
     top: 5%;
     width: 100rem;
     right: unset;
     left: 50%;
     transform: translateX(-40%);
   }
-  @include abs.fns-respond(cphone) {
+  @include abs.mxs-respond(cphone) {
     // filter: blur(2rem);
   }
-  @include abs.fns-respond(lphone) {
+  @include abs.mxs-respond(lphone) {
     width: 85rem;
     transform: translateX(-45%);
   }

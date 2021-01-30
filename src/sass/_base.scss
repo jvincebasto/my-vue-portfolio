@@ -285,19 +285,19 @@ a,input[type=text] { outline: none; }
 
 body {
 
-	@include abs.fns-respond(big-desktop) {
+	@include abs.mxs-respond(big-desktop) {
 
 	}
 
-	@include abs.fns-respond(tab-land) {
+	@include abs.mxs-respond(tab-land) {
 
 	}
 
-  @include abs.fns-respond(tab-port) {
+  @include abs.mxs-respond(tab-port) {
 
 	}
 
-  @include abs.fns-respond(phone) {
+  @include abs.mxs-respond(phone) {
 	
 	}
 }
@@ -310,10 +310,10 @@ body {
 		opacity: .8;
 	}
 	&-darkblue {
-		color: abs.$vars-c-darkblue;
+		color: abs.$vars-c-primary;
 	}
 	&-lightblue {
-		color: abs.$vars-c-lightblue;
+		color: abs.$vars-c-secondary;
 	}
 
 	&-uppercase {

@@ -1,0 +1,114 @@
+@use "../variables" as var;
+
+
+
+
+/* ~~~~~ Media Queries Mixins ~~~~~ */
+
+/*
+
+Common Screen Sizes:
+
+320px: Small Phone
+375px: Medium Phone
+425px: Large Phone
+
+
+768: Table Portrait
+1024: Small Laptop or Tablet Landscape
+
+
+1200: Medium Laptop or (Small or Regular Desktop) 
+1440: Regular Mac Desktop
+1800: Large Desktop
+
+*/
+
+
+/*
+
+1em = 16px
+
+0 - 600px:			Phone
+600 - 900px:    Tablet Portrait
+900 - 1200px:   Tablet Landscape
+1200 - 1800:	 	Normal
+1800 & above:   Big Desktop
+
+*/
+
+
+/*
+
+Largest to Lowest Media Screens
+
+Large Desktop Screen: min-width
+Regular to Smaller Screen: max-width
+
+*/
+
+
+// $mq-sphone: 20em;
+// $mq-mphone: 23.4375em;
+// $mq-lphone: 26.5625em;
+// $mq-cphone: 37.5em;
+
+// $mq-sptab: 48em;
+// $mq-mptab: 56.25em;
+
+// $mq-slaptop: 64em;
+// $mq-mlaptop: 75em;
+// $mq-ldesktop: 112.5em;
+
+
+@mixin respond($breakpoint) { 
+  @if $breakpoint == sphone { //320px
+    @media only screen and (max-width: var.$mq-sphone) 
+    { @content };
+  }
+  @if $breakpoint == mphone { //375px
+    @media only screen and (max-width: var.$mq-mphone) 
+    { @content };
+  }
+  @if $breakpoint == lphone { //425px
+    @media only screen and (max-width: var.$mq-lphone) 
+    { @content };
+  }
+  @if $breakpoint == cphone { //600px
+    @media only screen and (max-width: var.$mq-cphone) 
+    { @content };
+  }
+
+
+  @if $breakpoint == sptab { //768px
+    @media only screen and (max-width: var.$mq-sptab) 
+    { @content }; 
+  }
+  @if $breakpoint == mptab { //900px
+    @media only screen and (max-width: var.$mq-mptab) 
+    { @content }; 
+  }
+
+  
+  @if $breakpoint == slaptop { //1024px
+    @media only screen and (max-width: var.$mq-slaptop) 
+    { @content }; 
+  }
+  @if $breakpoint == mlaptop { //1200px
+    @media only screen and (max-width: var.$mq-mlaptop) 
+    { @content }; 
+  }
+  @if $breakpoint == ldesktop { //1800px
+    @media only screen and (min-width: var.$mq-ldesktop) 
+    { @content }; 
+  }
+}
+
+
+
+
+
+
+/* ~~~~~ ~~~~~ */
+/* ~~~~~ ~~~~~ */
+/* ~~~~~ ~~~~~ */

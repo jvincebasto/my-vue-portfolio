@@ -1,3 +1,4 @@
+@use "functions" as fn;
 
 
 
@@ -31,11 +32,47 @@ split complementary-2: 473E00
 */
 
 
+:root {
+
+	/* ~~~~~ Colors ~~~~~ */
+	--c-primary: rgb(0,49,83);
+	--c-secondary: rgb(10,184,178);
+	--c-white: rgb(235, 235, 235);
+	--c-black: rgb(0,0,0);
+	--c-grey: rgb(55,55,55);
+
+
+
+	--c-primary-hex: #003153;
+	--c-secondary-hex: #0ab8b2;
+	--c-white-hex: #ebebeb;
+	--c-black-hex: black;
+	--c-grey-hex: #373737;
+	
+
+	/* ~~~~~ Media Queries ~~~~~ */
+	--mq-sphone: 20em;
+	--mq-mphone: 23.4375em;
+	--mq-lphone: 26.5625em;
+	--mq-cphone: 37.5em;
+
+	--mq-sptab: 48em;
+	--mq-mptab: 56.25em;
+
+	--mq-slaptop: 64em;
+	--mq-mlaptop: 75em;
+	--mq-ldesktop: 112.5em;
+
+}
+
 
 /* ~~~~~ Primary Colors ~~~~~ */
 
-$c-darkblue: rgb(0,49,83);
-$c-lightblue: rgb(10,184,178);
+$c-primary: rgb(0,49,83);
+$c-secondary: rgb(10,184,178);
+
+$c-primary-hex: #003153;
+$c-secondary-hex: #0ab8b2;
 
 
 /* ~~~~~ Monotones ~~~~~ */
@@ -44,7 +81,57 @@ $c-white: rgb(235, 235, 235);
 $c-black: rgb(0,0,0);
 $c-grey: rgb(55,55,55);
 
+$c-white-hex: #ebebeb;
+$c-black-hex: black;
+$c-grey-hex: #373737;
 
+
+
+/* ~~~~~ Media Queries ~~~~~ */
+	$mq-sphone: 20em;
+	$mq-mphone: 23.4375em;
+	$mq-lphone: 26.5625em;
+	$mq-cphone: 37.5em;
+
+	$mq-sptab: 48em;
+	$mq-mptab: 56.25em;
+
+	$mq-slaptop: 64em;
+	$mq-mlaptop: 75em;
+	$mq-ldesktop: 112.5em;
+
+
+/* ~~~~~ Exports ~~~~~ */
+
+
+:export {
+	mqSphone: fn.strip-unit($mq-sphone);
+	mqMphone: fn.strip-unit($mq-mphone);
+	mqLphone: fn.strip-unit($mq-lphone);
+	mqCphone: fn.strip-unit($mq-cphone);
+
+	mqSptab: fn.strip-unit($mq-sptab);
+	mqMptab: fn.strip-unit($mq-mptab);
+
+	mqSlaptop: fn.strip-unit($mq-slaptop);
+	mqMlaptop: fn.strip-unit($mq-mlaptop);
+	mqLdesktop: fn.strip-unit($mq-ldesktop);
+
+
+
+	cPrimary: $c-primary;
+	cSecondary: $c-secondary;
+	cWhite: $c-white;
+	cBlack: $c-black;
+	cGrey: $c-grey;
+
+
+	cPrimaryHex: $c-primary-hex;
+	cSecondaryHex: $c-secondary-hex;
+	cWhiteHex: $c-white-hex;
+	cBlackHex: $c-black-hex;
+	cGreyHex: $c-grey-hex;
+}
 
 
 /* ~~~~~ ~~~~~ */

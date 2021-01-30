@@ -9,11 +9,90 @@ import Hero from "./homepage/Hero.vue";
 import About from "./homepage/About.vue";
 import Skills from "./homepage/Skills.vue";
 
+import Bp from "@/mixins/mediaMatch/MediaMatch.vue";
+import styles from "@/sass/abstracts/_variables.scss";
+
 export default {
   components: {
     Hero,
     About,
     Skills
+  },
+  mixins: [Bp],
+  data() {
+    const mediaObj = {
+      width: styles.mqSlaptop,
+      minmax: "min",
+      unit: "em"
+    };
+
+    return {
+      mediaObj
+    };
+  },
+  methods: {
+    navCheck(entries) {
+      const bubble = document.querySelector(".bubble");
+      // const gradient = [orangered,royalblue,crimson];
+      entries.forEach(entry => {
+        const ids = entry.target.id;
+        const links = document.querySelector(`[data-page=${ids}]`);
+
+        const linkCoords = links.getBoundingClientRect();
+        const props = {
+          height: linkCoords.height,
+          width: linkCoords.width,
+          top: linkCoords.top,
+          left: linkCoords.left
+        };
+
+        if (entry.isIntersecting) {
+          for (const prop in props) {
+            bubble.style.setProperty(prop, `${props[prop]}px`);
+          }
+        }
+      });
+    },
+    observerFn() {
+      const options = {
+        threshold: 0
+      };
+
+      const observer = new IntersectionObserver(this.navCheck, options);
+      return observer;
+    },
+    sectionList(...secArr) {
+      if (secArr) {
+        for (const secList in secArr) {
+          if (secArr[secList].length > 0) {
+            secArr[secList].forEach(section => {
+              const observer = this.observerFn();
+              observer.observe(section);
+            });
+          } else {
+            const observer = this.observerFn();
+            observer.observe(secArr[secList]);
+          }
+        }
+      }
+    },
+    invokeObserver() {
+      const sections = document.querySelectorAll("section");
+      const footer = document.querySelector(".section-footer");
+      if (sections) {
+        this.sectionList(sections, footer);
+      }
+    }
+  },
+  mounted() {
+    // if(this.mediaObj){
+    //   const bp = this.breakpoint(this.mediaObj.width,this.mediaObj.minmax,this.mediaObj.unit);
+    //   if(bp){
+    //     this.invokeObserver();
+    //     bp.addListener(this.invokeObserver);
+    //   }
+    // }
+    this.invokeObserver();
   }
 };
 </script>
@@ -43,7 +122,7 @@ export default {
     max-width: 85%;
     margin: auto;
 
-    @include abs.fns-respond(mlaptop) {
+    @include abs.mxs-respond(mlaptop) {
       max-width: 90%;
     }
 
@@ -81,7 +160,7 @@ export default {
 
   // background: crimson;
 
-  @include abs.fns-respond(mptab) {
+  @include abs.mxs-respond(mptab) {
     min-width: 100%;
     padding: 0;
   }
@@ -100,7 +179,7 @@ export default {
     text-transform: uppercase;
     font-family: tthin;
     letter-spacing: 0.3rem;
-    color: abs.$vars-c-darkblue;
+    color: abs.$vars-c-primary;
 
     margin-bottom: 1.5rem;
   }

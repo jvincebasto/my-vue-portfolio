@@ -28,7 +28,7 @@
     border: 0.4rem solid abs.$vars-c-black;
 
     margin-right: 0.6rem;
-    background: abs.$vars-c-lightblue;
+    background: abs.$vars-c-secondary;
   }
   &-radio div:last-child {
     margin-right: 0rem;

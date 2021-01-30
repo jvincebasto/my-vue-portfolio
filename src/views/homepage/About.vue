@@ -1,5 +1,5 @@
 <template>
-  <section class="section section-about" id="about">
+  <section data-index="1" class="section section-about" id="about">
     <div class="section-margin">
       <hr />
       <div class="section-title">
@@ -155,7 +155,10 @@
   </section>
 </template>
 
-<script></script>
+<script>
+// export default {
+// };
+</script>
 
 <style scoped lang="scss">
 @use "./../../sass/abstracts/abstracts" as abs;
@@ -174,15 +177,15 @@
     width: 5rem;
     margin-right: 3rem;
 
-    fill: abs.$vars-c-darkblue;
+    fill: abs.$vars-c-primary;
     // background: crimson;
 
-    @include abs.fns-respond(mptab) {
+    @include abs.mxs-respond(mptab) {
       height: 8rem;
       width: 8rem;
       margin-right: 4rem;
     }
-    @include abs.fns-respond(lphone) {
+    @include abs.mxs-respond(lphone) {
       height: 6rem;
       width: 6rem;
       margin-right: 3rem;
