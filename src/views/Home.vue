@@ -55,7 +55,7 @@ export default {
     },
     observerFn() {
       const options = {
-        threshold: 0
+        threshold: 0.4
       };
 
       const observer = new IntersectionObserver(this.navCheck, options);
