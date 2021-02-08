@@ -1,7 +1,7 @@
 <template>
-  <Hero />
-  <About />
-  <Skills />
+  <Hero ref="compHero" />
+  <About ref="compAbout" />
+  <Skills ref="compSkills" />
 </template>
 
 <script>
@@ -10,15 +10,20 @@ import About from "./homepage/About.vue";
 import Skills from "./homepage/Skills.vue";
 
 import Bp from "@/mixins/mediaMatch/MediaMatch.vue";
+import getRefs from "@/mixins/getRefs/GetRefs.vue";
+import intersectObs from "@/mixins/intersectionObservers/intersectObs.vue";
 import styles from "@/sass/abstracts/_variables.scss";
 
 export default {
+  props: {
+    refsObj: Object
+  },
   components: {
     Hero,
     About,
     Skills
   },
-  mixins: [Bp],
+  mixins: [Bp, getRefs, intersectObs],
   data() {
     const mediaObj = {
       width: styles.mqSlaptop,
@@ -30,69 +35,30 @@ export default {
       mediaObj
     };
   },
-  methods: {
-    navCheck(entries) {
-      const bubble = document.querySelector(".bubble");
-      // const gradient = [orangered,royalblue,crimson];
-      entries.forEach(entry => {
-        const ids = entry.target.id;
-        const links = document.querySelector(`[data-page=${ids}]`);
-
-        const linkCoords = links.getBoundingClientRect();
-        const props = {
-          height: linkCoords.height,
-          width: linkCoords.width,
-          top: linkCoords.top,
-          left: linkCoords.left
-        };
-
-        if (entry.isIntersecting) {
-          for (const prop in props) {
-            bubble.style.setProperty(prop, `${props[prop]}px`);
-          }
-        }
-      });
-    },
-    observerFn() {
-      const options = {
-        threshold: 0.4
-      };
-
-      const observer = new IntersectionObserver(this.navCheck, options);
-      return observer;
-    },
-    sectionList(...secArr) {
-      if (secArr) {
-        for (const secList in secArr) {
-          if (secArr[secList].length > 0) {
-            secArr[secList].forEach(section => {
-              const observer = this.observerFn();
-              observer.observe(section);
-            });
-          } else {
-            const observer = this.observerFn();
-            observer.observe(secArr[secList]);
-          }
-        }
-      }
-    },
-    invokeObserver() {
-      const sections = document.querySelectorAll("section");
-      const footer = document.querySelector(".section-footer");
-      if (sections) {
-        this.sectionList(sections, footer);
-      }
-    }
+  created() {
+    // console.log('home Created');
   },
   mounted() {
-    // if(this.mediaObj){
-    //   const bp = this.breakpoint(this.mediaObj.width,this.mediaObj.minmax,this.mediaObj.unit);
-    //   if(bp){
-    //     this.invokeObserver();
-    //     bp.addListener(this.invokeObserver);
-    //   }
-    // }
-    this.invokeObserver();
+    // console.log('home mounted');
+
+    const bp = this.breakpoint(
+      this.mediaObj.width,
+      this.mediaObj.minmax,
+      this.mediaObj.unit
+    );
+
+    this.collectRefs(this.refsObj, this.$refs, this.homeCompRefs);
+    if (bp.matches) {
+      // console.log("Added Observer");
+
+      const options = this.observerOpt();
+      this.invokeObserver(options, this.bubbleSliderFn, this.refsObj, false);
+    } else {
+      // console.log("Removed Observer");
+
+      const options = this.observerOpt(0.4);
+      this.invokeObserver(options, this.bubbleSliderFn, this.refsObj, true);
+    }
   }
 };
 </script>
@@ -130,7 +96,7 @@ export default {
   }
 
   &-title {
-    padding: 3vh 0;
+    padding: 3rem 0;
     margin-bottom: 3rem;
 
     // background: green;

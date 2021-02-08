@@ -1,5 +1,10 @@
 <template>
-  <section data-index="1" class="section section-about" id="about">
+  <section
+    data-section="about"
+    class="section section-about"
+    id="about"
+    ref="sectAbout"
+  >
     <div class="section-margin">
       <hr />
       <div class="section-title">
@@ -157,6 +162,7 @@
 
 <script>
 // export default {
+
 // };
 </script>
 

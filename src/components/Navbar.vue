@@ -8,11 +8,11 @@
 
   <!-- Navbar -->
 
-  <nav class="nav section">
+  <nav class="nav section" ref="sectNav">
     <div class="nav-flex section-margin">
       <div class="nav-logo">
         <ul>
-          <li>
+          <li ref="nlinkHero">
             <btn-secondary
               data-page="hero"
               :btn-type="linkObj('link', '#')"
@@ -27,10 +27,14 @@
 
       <div class="nav-links">
         <ul>
-          <li data-page="about"><a href="#about">About</a></li>
-          <li data-page="skills"><a href="#skills">Skills</a></li>
-          <li data-page="contacts"><a href="#contacts">Contact</a></li>
-          <li class="bubble"></li>
+          <li ref="nlinkAbout" data-page="about"><a href="#about">About</a></li>
+          <li ref="nlinkSkills" data-page="skills">
+            <a href="#skills">Skills</a>
+          </li>
+          <li ref="nlinkContacts" data-page="contacts">
+            <a href="#contacts">Contact</a>
+          </li>
+          <li ref="bubbleSlider" class="bubble"></li>
           <!-- <li><router-link to="/">list</router-link></li> -->
         </ul>
       </div>
@@ -129,6 +133,12 @@ export default {
       return obj;
     }
   }
+  // created() {
+  //   console.log('navbar created');
+  // },
+  // mounted() {
+  //   console.log('navbar mounted');
+  // }
 };
 </script>
 

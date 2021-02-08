@@ -1,5 +1,10 @@
 <template>
-  <footer data-index="3" class="section section-footer" id="contacts">
+  <footer
+    data-section="contacts"
+    class="section section-footer"
+    id="contacts"
+    ref="sectFooter"
+  >
     <div class="section-margin">
       <div class="section-title">
         <h2>Contacts</h2>
@@ -33,8 +38,14 @@
 </template>
 
 <script>
-// export default {
-// };
+export default {
+  // created() {
+  //   console.log('footer created');
+  // },
+  // mounted() {
+  //   console.log('footer mounted');
+  // }
+};
 </script>
 
 <style scoped lang="scss">

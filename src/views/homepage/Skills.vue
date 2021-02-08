@@ -1,5 +1,10 @@
 <template>
-  <section data-index="2" class="section section-skills" id="skills">
+  <section
+    data-section="skills"
+    class="section section-skills"
+    id="skills"
+    ref="sectSkills"
+  >
     <div class="section-margin">
       <hr />
       <div class="section-title">

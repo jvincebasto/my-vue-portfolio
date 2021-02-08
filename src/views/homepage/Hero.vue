@@ -1,8 +1,9 @@
 <template>
   <section
-    data-index="0"
+    data-section="hero"
     class="section section-hero section-hero--height"
     id="hero"
+    ref="sectHero"
   >
     <div class="section-margin">
       <div class="headline headline-block">
